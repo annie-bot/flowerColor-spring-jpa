@@ -34,6 +34,7 @@ public class UserService {
         user.setCpf(userDto.getCpf());
         user.setPassword(userDto.getPassword());
         this.repository.save(user);
+        System.out.println("teste");
         return user;
     }
 
