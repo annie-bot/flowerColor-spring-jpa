@@ -9,4 +9,4 @@
   - Utilização de dependencias em MAVEN: Lombok, HTTPApache e Gson.
   - Validação de API: http://cep.la/api
   
-  <h2><a href="https://github.com/annie-bot/flowerColor-spring-jpa">Acesso ao Frontend</a>
+  <h2><a href="https://github.com/annie-bot/front-end-shop">Acesso ao Frontend</a>
