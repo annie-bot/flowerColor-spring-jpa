@@ -1,6 +1,5 @@
 package com.flowercolor.shop.resources;
 
-import com.flowercolor.shop.entities.Supplier;
 import com.flowercolor.shop.services.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,9 +18,10 @@ public class EnterpriseResource {
 	private EnterpriseService service;
 
 	@GetMapping
-	public ResponseEntity<List<Enterprise>> findAll(){
+	public ResponseEntity<List<Enterprise>> findAll(String search){
 		return ResponseEntity.ok(this.service.list());
 	}
+
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Enterprise> findById(@RequestParam Long id){
@@ -35,7 +35,7 @@ public class EnterpriseResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> create(@RequestBody Enterprise enterpriseDto){
+	public ResponseEntity<Void> create(@RequestBody Enterprise enterpriseDto) throws Exception {
 		this.service.create(enterpriseDto);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}

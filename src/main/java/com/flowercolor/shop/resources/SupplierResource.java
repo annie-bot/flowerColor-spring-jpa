@@ -34,7 +34,7 @@ public class SupplierResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> create(@RequestBody Supplier supplierDto){
+	public ResponseEntity<Void> create(@RequestBody Supplier supplierDto) throws Exception {
 		this.service.create(supplierDto);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}

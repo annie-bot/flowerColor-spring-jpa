@@ -13,16 +13,24 @@ public class EnterpriseService {
     @Autowired
     private EnterpriseRepository repository;
 
-    public void create (Enterprise enterpriseDto){
+    public void create (Enterprise enterpriseDto) throws Exception {
         Enterprise enterprise = new Enterprise(enterpriseDto.getCnpj(), enterpriseDto.getFlowerColor(), enterpriseDto.getCep());
-        this.repository.save(enterprise);
+        if (repository.findByCnpj(enterprise.getCnpj()).isPresent()) {
+            throw new Exception("CNPJ já existe!");
+        }
+//        if (enterprise.getCnpj().length() == 11) { // pessoa física
+//            // verifica se a empresa é do Paraná e se o fornecedor é maior de idade
+//            if (enterprise.getCep().startsWith("80") &&
+//                    LocalDate.now().minusYears(18).isBefore(fornecedor.getDataNascimento()))
+//                this.repository.save(enterprise);
+//        }
     }
 
-    public List<Enterprise>list(){
+    public List<Enterprise> list(){
         return this.repository.findAll();
     }
 
-    public Enterprise findByID(Long id){
+    public Enterprise findByID(long id) {
         return this.repository.findById(id).get();
     }
 

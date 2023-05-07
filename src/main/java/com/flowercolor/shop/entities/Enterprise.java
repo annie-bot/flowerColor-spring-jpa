@@ -1,11 +1,14 @@
 package com.flowercolor.shop.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 @Table(name = "tb_enterprise")
 public class Enterprise implements Serializable {
 
@@ -18,6 +21,9 @@ public class Enterprise implements Serializable {
 	private String cnpj;
 	private String flowerColor;
 	private String cep;
+
+	@OneToMany
+	private List<Supplier> suppliers;
 	
 	public Enterprise() {
 	}
